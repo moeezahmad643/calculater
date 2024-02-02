@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+</head>
+<style>
+    .calculator-box {
+  border: 1px solid gray;
+  width: 20rem;
+  padding: 10px;
+  margin: 30px auto;
+  border-radius: 10px;
+  box-shadow: 0 0 5px gray;
+  background-color: black;
+}
+
+.result {
+  background-color: black;
+  color: aliceblue;
+  border-radius: 10px;
+  border: 1px solid rgb(45, 45, 45);
+  padding: 1.5rem;
+  width: 80%;
+  font-size: 35px;
+  text-align: right;
+  box-shadow: 0 0 5px gray;
+  margin: 10px 0;
+}
+
+.button {
+  box-shadow: 0 0 5px gray;
+  border: 1px solid black;
+  border-radius: 10px;
+  font-size: 20px;
+  padding: 1rem;
+  width: 20%;
+  margin: 0.4rem;
+  /* margin: 0.41rem; */
+}
+
+.longbutton {
+  width: 45%;
+}
+
+.main-button {
+  width: 40%;
+}
+
+.yellow {
+  background-color: #ED9229;
+  color: antiquewhite;
+}
+
+.gray {
+  background-color: gray;
+  color: antiquewhite;
+}
+
+</style>
+
+<body>
+     <h1 style='text-align:center; font-family: Arial, Helvetica, sans-serif; '>Calculater</h1>
+    <div id="root">
+        <div class="main-box">
+          <div class="calculator-box">
+            <center>
+                <input class="result" placeholder="0" value="">
+            </center>
+            <input type="button" value="C" class="button otherbutton gray">
+            <input type="button" value="/" class="button gray">
+            <input type="button" value="*" class="button gray">
+            <input type="button" value="%" class="button yellow">
+            <input type="button" value="7" class="button">
+            <input type="button" value="8" class="button">
+            <input type="button" value="9" class="button">
+            <input type="button" value="-" class="button yellow">
+            <input type="button" value="4" class="button">
+            <input type="button" value="5" class="button">
+            <input type="button" value="6" class="button">
+            <input type="button" value="+" class="button yellow">
+            <input type="button" value="1" class="button">
+            <input type="button" value="2" class="button">
+            <input type="button" value="3" class="button">
+            <input type="button" value="." class="button yellow">
+            <input type="button" value="0" class="button">
+            <input type="button" value="00" class="button">
+            <input type="button" value="=" class="button yellow otherbutton longbutton">
+          </div>
+        </div>
+      </div>
+
+  <script>
+  
+  document.addEventListener("DOMContentLoaded", function() {
+  const resultElement = document.querySelector(".result");
+  const buttons = document.querySelectorAll(".button");
+  let result = "";
+
+  buttons.forEach(button => {
+    button.addEventListener("click", function() {
+      const value = this.value;
+
+      if (value === "=") {
+        try {
+          result = eval(result).toString();
+        } catch (error) {
+          result = "Error";
+        }
+      } else if (value === "C") {
+        result = "";
+      } else {
+        result += value;
+      }
+
+      resultElement.value = result;
+    });
+  });
+});
+
+
+  </script>
+</body>
+
+</html>
